@@ -1,0 +1,11 @@
+Origin: DiscordApt
+Label: DiscordApt
+Suite: stable
+Codename: stable
+Architectures: amd64
+Components: main
+Description: Auto-updating Discord APT Repository
+MD5Sum:
+ 071a40a33c6357f2447fb898a65bb3ec 596 main/binary-amd64/Packages.gz
+SHA256:
+ a17aead28910c0d97acf9370646ba6eb6fb53653a6a65d8aad8edc331c84ce21 596 main/binary-amd64/Packages.gz
