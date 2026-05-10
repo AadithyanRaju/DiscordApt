@@ -5,10 +5,30 @@ set -e
 mkdir -p pool/main
 mkdir -p dists/stable/main/binary-amd64
 
+echo "[+] Checking latest Discord version..."
+
+LATEST_URL=$(curl -Ls -o /dev/null -w %{url_effective} \
+"https://discord.com/api/download?platform=linux&format=deb")
+
+NEW_VERSION=$(echo "$LATEST_URL" | grep -oP 'discord-\K[0-9.]+')
+
+echo "[+] Latest version: $NEW_VERSION"
+
+OLD_VERSION=$(cat .version 2>/dev/null || echo "")
+
+if [ "$NEW_VERSION" = "$OLD_VERSION" ]; then
+    echo "[+] No new version available."
+    exit 0
+fi
+
+echo "[+] New version detected."
+
+echo "$NEW_VERSION" > .version
+
 echo "[+] Cleaning old packages..."
 rm -f pool/main/*.deb
 
-echo "[+] Downloading latest Discord..."
+echo "[+] Downloading Discord..."
 
 wget -O pool/main/discord.deb \
 "https://discord.com/api/download?platform=linux&format=deb"
@@ -58,4 +78,4 @@ SHA256:
  $SHA256_GZ $PKG_GZ_SIZE main/binary-amd64/Packages.gz
 EOF
 
-echo "[+] Done."
+echo "[+] Repository updated successfully."
