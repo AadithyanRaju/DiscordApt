@@ -17,8 +17,10 @@ echo "[+] Creating package metadata..."
 
 mkdir -p dists/stable/main/binary-amd64
 
-dpkg-scanpackages pool /dev/null \
-> dists/stable/main/binary-amd64/Packages
+cd pool
+dpkg-scanpackages main /dev/null \
+> ../dists/stable/main/binary-amd64/Packages
+cd ..
 
 gzip -kf dists/stable/main/binary-amd64/Packages
 
@@ -31,11 +33,14 @@ SIZE=$(stat -c%s main/binary-amd64/Packages.gz)
 
 SHA256=$(sha256sum main/binary-amd64/Packages.gz | cut -d ' ' -f1)
 
-cat > Release <<EOF
+DATE=$(date -Ru)
+
+cat > dists/stable/Release <<EOF
 Origin: DiscordApt
 Label: DiscordApt
 Suite: stable
 Codename: stable
+Date: $DATE
 Architectures: amd64
 Components: main
 Description: Auto-updating Discord APT Repository
