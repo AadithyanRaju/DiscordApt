@@ -19,6 +19,7 @@ mkdir -p dists/stable/main/binary-amd64
 
 cd pool
 dpkg-scanpackages main /dev/null \
+| sed 's|Filename: |Filename: pool/|' \
 > ../dists/stable/main/binary-amd64/Packages
 cd ..
 
