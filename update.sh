@@ -1,56 +1,61 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 set -e
 
-echo "[+] Cleaning old package..."
+mkdir -p pool/main
+mkdir -p dists/stable/main/binary-amd64
 
+echo "[+] Cleaning old packages..."
 rm -f pool/main/*.deb
 
-mkdir -p pool/main
-
-echo "[+] Downloading latest Discord package..."
+echo "[+] Downloading latest Discord..."
 
 wget -O pool/main/discord.deb \
 "https://discord.com/api/download?platform=linux&format=deb"
 
-echo "[+] Creating package metadata..."
-
-mkdir -p dists/stable/main/binary-amd64
+echo "[+] Generating package index..."
 
 cd pool
+
 dpkg-scanpackages main /dev/null \
 | sed 's|Filename: |Filename: pool/|' \
 > ../dists/stable/main/binary-amd64/Packages
+
 cd ..
 
 gzip -kf dists/stable/main/binary-amd64/Packages
 
 echo "[+] Calculating hashes..."
 
-cd dists/stable
+PKG_SIZE=$(stat -c%s dists/stable/main/binary-amd64/Packages)
+PKG_GZ_SIZE=$(stat -c%s dists/stable/main/binary-amd64/Packages.gz)
 
-MD5=$(md5sum main/binary-amd64/Packages.gz | cut -d ' ' -f1)
-SIZE=$(stat -c%s main/binary-amd64/Packages.gz)
+MD5_PKG=$(md5sum dists/stable/main/binary-amd64/Packages | awk '{print $1}')
+MD5_GZ=$(md5sum dists/stable/main/binary-amd64/Packages.gz | awk '{print $1}')
 
-SHA256=$(sha256sum main/binary-amd64/Packages.gz | cut -d ' ' -f1)
+SHA256_PKG=$(sha256sum dists/stable/main/binary-amd64/Packages | awk '{print $1}')
+SHA256_GZ=$(sha256sum dists/stable/main/binary-amd64/Packages.gz | awk '{print $1}')
 
-DATE=$(date -Ru)
+DATE=$(LC_ALL=C date -Ru)
+
+echo "[+] Creating Release file..."
 
 cat > dists/stable/Release <<EOF
 Origin: DiscordApt
 Label: DiscordApt
 Suite: stable
 Codename: stable
+Version: 1.0
 Date: $DATE
 Architectures: amd64
 Components: main
 Description: Auto-updating Discord APT Repository
 MD5Sum:
- $MD5 $SIZE main/binary-amd64/Packages.gz
+ $MD5_PKG $PKG_SIZE main/binary-amd64/Packages
+ $MD5_GZ $PKG_GZ_SIZE main/binary-amd64/Packages.gz
 SHA256:
- $SHA256 $SIZE main/binary-amd64/Packages.gz
+ $SHA256_PKG $PKG_SIZE main/binary-amd64/Packages
+ $SHA256_GZ $PKG_GZ_SIZE main/binary-amd64/Packages.gz
 EOF
 
-cd ../..
-
-echo "[+] Repository updated successfully."
+echo "[+] Done."
