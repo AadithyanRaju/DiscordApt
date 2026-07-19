@@ -1,5 +1,5 @@
 Package: discord
-Version: 1.0.146
+Version: 1.0.149
 Architecture: amd64
 Maintainer: Discord Maintainer Team <noreply@discord.com>
 Installed-Size: 4276
@@ -7,9 +7,9 @@ Depends: libc6, libasound2, libatk1.0-0, libatk-bridge2.0-0, libatspi2.0-0, liba
 Recommends: libunity9, libva2, libpipewire-0.3-0
 Filename: pool/main/discord.deb
 Size: 2178024
-MD5sum: fe2859a35146885dfd63128634a38fc9
-SHA1: 3c86e91f68f987ed8a26ff9281907eafd7fde394
-SHA256: 303b38bce44b0ed3177c5c3cd4a8bf9499aa537868da90151a13b10ae6acb979
+MD5sum: 02205e5422804b82c76b815cae0a9ade
+SHA1: 42677ae98ddd804a611706ec401c4e23405225dd
+SHA256: 2a7c8e83ca3288e0d32399724dabb6f5ff4d80a4055fdfc425dca527c0378b2f
 Section: net
 Priority: optional
 Homepage: https://discord.com
