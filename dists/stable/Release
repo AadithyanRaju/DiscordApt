@@ -3,13 +3,13 @@ Label: DiscordApt
 Suite: stable
 Codename: stable
 Version: 1.0
-Date: Sun, 26 Jul 2026 01:49:50 +0000
+Date: Sun, 02 Aug 2026 01:49:05 +0000
 Architectures: amd64
 Components: main
 Description: Auto-updating Discord APT Repository
 MD5Sum:
- a41871757857460a9e9f05ff99ea7e7f 960 main/binary-amd64/Packages
- 206402f88cf76b8d2c00724ad0e30db3 597 main/binary-amd64/Packages.gz
+ be3901ec0f22e2761112a5962ed9362a 960 main/binary-amd64/Packages
+ cf847b13539c9860f4789e3d90e5f3f4 599 main/binary-amd64/Packages.gz
 SHA256:
- d8ca7c5f9a76e6e33a939c6e0a9c8547123b9f24d6f14a874b529c6ad5d3a969 960 main/binary-amd64/Packages
- b69162553c04b762000e02dcb3c17b9b0c54dc4e9faf361ec001ee259238d1bf 597 main/binary-amd64/Packages.gz
+ 8cea45eb937af80c2d571fe873d43842ea5a9e4c35b08b8cf01458eeb152b481 960 main/binary-amd64/Packages
+ f156120229ad579333a1de7df7deea391618070a6304263f872d14100d71e792 599 main/binary-amd64/Packages.gz
