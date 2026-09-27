@@ -1,15 +1,15 @@
 Package: discord
-Version: 1.0.158
+Version: 1.0.159
 Architecture: amd64
 Maintainer: Discord Maintainer Team <noreply@discord.com>
 Installed-Size: 4280
 Depends: libc6, libasound2, libatk1.0-0, libatk-bridge2.0-0, libatspi2.0-0, libatomic1, libcairo2, libdbus-1-3, libexpat1, libgbm1, libglib2.0-0, libgtk-3-0, libnotify4, libnspr4, libnss3, libpango-1.0-0, libstdc++6, libudev1, libx11-6, libxcb1, libxcomposite1, libxdamage1, libxext6, libxfixes3, libxkbcommon0, libxrandr2
 Recommends: libunity9, libva2, libpipewire-0.3-0
 Filename: pool/main/discord.deb
-Size: 2179726
-MD5sum: 802f288d24662a724734e8e594c6ad58
-SHA1: 11bf3a3fe0256923cc2be9db43dfdb5f6c2a0320
-SHA256: 022b1e269bcd1523542fb35b51ae840fdb994d96a8a2245f1c54542b545b2060
+Size: 2179730
+MD5sum: e331ef4b96cf97653c7ab5e6a232bb0d
+SHA1: 2cb939f4f41262d36acdb62bfe57416a3790652c
+SHA256: 66defc5f8da531bd97497963dd3f00a9c88a10d7667802c098598db3a70e990f
 Section: net
 Priority: optional
 Homepage: https://discord.com
